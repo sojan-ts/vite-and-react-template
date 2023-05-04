@@ -26,7 +26,7 @@ const isTokenExpired = () => {
       throw new Error("Refresh token not found");
     }
   
-    const response = await axios.post(`${configurations.baseurl}auth/refreshadmin`, {
+    const response = await axios.post(`${configurations.baseurl}auth/refreshmember`, {
       refresh_token: refreshToken,
       id: userid_send,
     });

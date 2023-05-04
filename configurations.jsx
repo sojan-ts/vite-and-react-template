@@ -1,5 +1,5 @@
-export const baseurl = "http://localhost:8000/api/";
-export const filesurl = "http://localhost:8000/"
+export const baseurl = "https://skilinkglobal.com/test/api/";
+export const filesurl = "https://skilinkglobal.com/test/"
 export default {
     baseurl, filesurl
 };

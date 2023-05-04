@@ -9,7 +9,7 @@ const LoginAuth = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault(); // prevent default form submission behavior
-    const loginAuthData = { username, password };
+    const loginAuthData = { "email": username, password };
     try {
       const response = await DataController.LoginAuth(loginAuthData);
       // if loginAuth is successful, navigate to dashboard page

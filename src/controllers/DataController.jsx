@@ -6,7 +6,7 @@ class DataController {
   static async LoginAuth(data) {
     try {
       const response = await axios.post(
-        `${configurations.baseurl}auth/loginadmin`,
+        `${configurations.baseurl}auth/loginmember`,
         data,
         {
           headers: {
@@ -37,6 +37,67 @@ class DataController {
       console.log("401 response code");
       await refreshAdminToken();
       return this.getdata(attempt + 1);
+    }
+  }
+
+  static async postData(data, attempt = 1) {
+    if (isTokenExpired()) {
+      await refreshAdminToken();
+    }
+    const accessToken = sessionStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+    try {
+      const response = await axios.post(`${configurations.baseurl}user/insertcategory`, data, {
+        headers: headers,
+      });
+      return response;
+    } catch (e) {
+      console.log("401 response code");
+      await refreshAdminToken();
+      return this.postData(data, attempt+1);
+    }
+  }
+  
+  static async getlistdata(page, visibility, search, attempt = 1) {
+    if (isTokenExpired()) {
+      await refreshAdminToken();
+    }
+    const accessToken = sessionStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+    try {
+      const response = await 
+      axios.get(`${configurations.baseurl}user/paginatecategory?search=${search}&visibility=${visibility}&page=${page}`, {
+        headers: headers,
+      });
+      return response;
+    } catch (e) {
+      console.log("401 response code");
+      await refreshAdminToken();
+      return this.getlistdata(page,attempt + 1);
+    }
+  }
+
+  static async updateData(id, data, attempt = 1) {
+    if (isTokenExpired()) {
+      await refreshAdminToken();
+    }
+    const accessToken = sessionStorage.getItem("token");
+    const headers = {
+      Authorization: `Bearer ${accessToken}`,
+    };
+    try {
+      const response = await axios.patch(`${configurations.baseurl}user/updatecategory/${id}`, data, {
+        headers: headers,
+      });
+      return response;
+    } catch (e) {
+      console.log("401 response code");
+      await refreshAdminToken();
+      return this.postData(data, attempt+1);
     }
   }
 
@@ -78,7 +139,7 @@ class DataController {
     }
   }
 
-  static async updateData(data) {
+  static async updateDatat(data) {
     try {
       const response = await fetch(
         `https://jsonplaceholder.typicode.com/posts/${data.id}`,
