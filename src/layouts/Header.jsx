@@ -16,7 +16,7 @@ export default function Header() {
           <div className="section" id="header-widget">
             <div className="widget Header" data-version="2" id="Header00">
               <div className="header-inner">
-                <h1 data-text="My Title">My Title</h1>
+                <h1 data-text="My Title">Sardartrades</h1>
               </div>
               <div className="description hidden"></div>
             </div>

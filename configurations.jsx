@@ -1,5 +1,6 @@
-export const baseurl = "https://skilinkglobal.com/test/api/";
-export const filesurl = "https://skilinkglobal.com/test/"
+export const baseurl = "https://sardartrades.in/app/api/st00007777/";
+export const filesurl = "https://skilinkglobal.com/test/";
 export default {
-    baseurl, filesurl
+  baseurl,
+  filesurl,
 };

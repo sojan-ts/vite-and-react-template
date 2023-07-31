@@ -2,18 +2,23 @@
     "menuItems": [
       {
         "id": 1,
-        "name": "Home",
+        "name": "Dashboard",
         "link": "/"
       },
       {
         "id": 2,
-        "name": "About",
-        "link": "/about"
+        "name": "Users",
+        "link": "/users"
       },
       {
         "id": 3,
-        "name": "Contact",
-        "link": "/contact"
+        "name": "Courses",
+        "link": "/courses"
+      },
+      {
+        "id": 4,
+        "name": "Carousel",
+        "link": "/carousel"
       }
     ]
   }
